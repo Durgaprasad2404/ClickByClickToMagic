@@ -39,7 +39,7 @@ const levels = [
   { image: "./HideImages/31.jpg", buttons: 35 },
   { image: "./HideImages/32.webp", buttons: 35 },
   { image: "./HideImages/33.jpg", buttons: 35 },
-  { image: "./HideImages/34.jpg", buttons: 35 },
+  { image: "./images/HideImages/34.jpg", buttons: 35 },
   { image: "./HideImages/35.png", buttons: 35 },
 ];
 
@@ -82,7 +82,7 @@ function ClickByClick() {
   // sounds
   const correctAnswerSoundRef = useRef(new Audio("/sounds/correct.wav"));
   const wrongAnswerSoundRef = useRef(new Audio("/sounds/error.wav"));
-  const gamewinAnswerSoundRef = useRef(new Audio("/sounds/gamewin.mp3"));
+  const gamewinAnswerSoundRef = useRef(new Audio("/sounds/gamewin.wav"));
   // const gameSoundRef = useRef(new Audio("/sounds/swathi.mpeg"));
 
   const handleComplete = useCallback(() => {
@@ -141,7 +141,16 @@ function ClickByClick() {
   useEffect(() => {
     setShowGrid(true); // Ensure grid is shown on initial render
   }, []);
-
+  useEffect(() => {
+    if (showWinningMessage && currentLevel === levels.length - 1) {
+      // If the current level is the last level and the winning message is shown
+      // Reset the game state and clear local storage
+      setCurrentLevel(0);
+      setCompletedLevels([]);
+      localStorage.removeItem("currentLevel");
+      localStorage.removeItem("completedLevels");
+    }
+  }, [currentLevel, showWinningMessage]);
   useEffect(() => {
     localStorage.setItem("completedLevels", JSON.stringify(completedLevels));
   }, [completedLevels]);
@@ -267,7 +276,7 @@ function ClickByClick() {
           <div className="restart" style={{ position: "relative" }}>
             <button onClick={handleRestartLevel} className="restart-btn">
               <VscDebugRestart />
-              <p>Restart Level</p>
+              <p className="hide-Para">Restart Level</p>
             </button>
             <button onClick={handleBackToHome} className="backToHomebtn">
               <FaHome />
@@ -278,7 +287,7 @@ function ClickByClick() {
                 className="next-level-btn"
                 disabled={!completedLevels.includes(currentLevel)}
               >
-                <p>Next Level</p>
+                <p className="hide-Para">Next Level</p>
                 <TiArrowForward />
               </button>
             )}
