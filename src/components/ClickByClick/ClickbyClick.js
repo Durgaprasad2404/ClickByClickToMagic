@@ -82,7 +82,7 @@ function ClickByClick() {
   // sounds
   const correctAnswerSoundRef = useRef(new Audio("/sounds/correct.wav"));
   const wrongAnswerSoundRef = useRef(new Audio("/sounds/error.wav"));
-  const gamewinAnswerSoundRef = useRef(new Audio("/sounds/gamewin.wav"));
+  const gamewinAnswerSoundRef = useRef(new Audio("/sounds/gamewin.mp3"));
   // const gameSoundRef = useRef(new Audio("/sounds/swathi.mpeg"));
 
   const handleComplete = useCallback(() => {
