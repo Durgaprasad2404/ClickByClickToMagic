@@ -1,6 +1,6 @@
 /* HOME */
 .startPageBoard {
-    height: 100vh;
+    height: 100dvh;
     position: relative;
     display: flex;
     justify-content: center;
@@ -148,20 +148,18 @@
 }
 
 .dog-img {
-    height: 90vh;
+    height: 90dvh;
     width: 100%;
-    object-fit: fill;
-    aspect-ratio: 3/2;
 }
 
 .imgContainer {
     position: absolute;
-    height: 90vh;
+    height: 90dvh;
     width: 100%;
 }
 
 .grid-container {
-    height: 90vh;
+    height: 90dvh;
     width: 100%;
     display: grid;
     grid-template-columns: repeat(5, 1fr);
@@ -197,15 +195,18 @@
     z-index: 99;
     border: 10px solid red;
     border-radius: 15px;
-    height: 90vh;
+    height: 90dvh;
     width: 100%;
     margin: -10px;
-
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .error-symbol {
-    font-size: 70vh;
     width: 100%;
+    font-size: 400px;
     color: red;
 }
 
@@ -280,7 +281,8 @@
 }
 
 .did-it {
-    height: 50vh;
+    height: 50dvh;
+    width: 50%;
     margin: 20px 2px;
 }
 
@@ -292,6 +294,38 @@
     100% {
         transform: scale(1);
     }
+}
+
+@media screen and (max-width:576px) {
+    .hide-Para {
+        display: none;
+    }
+
+    .cross-message {
+        height: 50dvh;
+    }
+
+    .child-container {
+        padding: 0px;
+    }
+
+    .grid-container {
+        height: 50dvh;
+        width: 100%;
+    }
+
+    .imgContainer {
+        height: 50dvh;
+    }
+
+    .dog-img {
+        height: 50dvh;
+    }
+
+    .numbers {
+        font-size: x-large;
+    }
+
 }
 
 @media screen and (min-width:1024px) {
